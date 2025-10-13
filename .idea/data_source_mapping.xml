@@ -4,5 +4,8 @@
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/4fd6a479-00ea-456e-a0d0-37e105530bac/console.sql" value="4fd6a479-00ea-456e-a0d0-37e105530bac" />
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51/console.sql" value="cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51" />
     <file url="file://$PROJECT_DIR$/src/author.sql" value="cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51" />
+    <file url="file://$PROJECT_DIR$/src/dmlSession.sql" value="cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51" />
+    <file url="file://$PROJECT_DIR$/src/home.sql" value="cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51" />
+    <file url="file://$PROJECT_DIR$/src/homework.sql" value="cf0f75f3-96dc-4fa2-97e7-71e7b01ffa51" />
   </component>
 </project>
