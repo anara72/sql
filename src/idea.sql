@@ -21,7 +21,7 @@ CREATE TABLE employee
     age        INT,
     data       DATE,
     email      VARCHAR UNIQUE,
-    hotel      INTEGER REFERENCES hotel (id)
+    hotel_id      INTEGER REFERENCES hotel (id)
 );
 INSERT INTO employee (first_name, last_name, age, data, email, hotel)
 VALUES  ('Aibek', 'Samatov', 29, '2023-04-15','Aibek@hotel.kg' , 1),

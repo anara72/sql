@@ -1,0 +1,137 @@
+CREATE TABLE hotel
+(  id SERIAL PRIMARI KEY,
+   name VARCHAR NOT NULL,
+   address VARCHAR,
+   numberPhone VARCHAR,
+   email VARCHAR UNIQUE
+
+);
+INSERT INTO hotel(name, address, numberPhone, email)
+VALUES ('Silk Road Inn', 'Karakol, Toktogul Street 33', '+996777111222', 'reservation@silkroadinn.kg'),
+    ('Mountain View', 'Naryn, Central Avenue 10', '+996550333444', 'hello@mountainview.kg'),
+    ('Issyk-Kul Resort', 'Cholpon-Ata, Beach Road 5', '+996770999888', 'stay@issykresort.kg');
+
+
+CREATE TABLE menedger
+(  id SERIAL PRIMERI KEY,
+    first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	phoneNumber VARCHAR NOT NULL,
+	 email  VARCHAR UNIQUE,
+	 hotel_id INT REFERENCES hotel(id)
+);
+INSER INTO menedger (first_name, last_name, phoneNumber, email,hotel_id)
+VALUES('Asan','Asanov','+996705555666','asan@.com',1),
+       ('Urmat', 'Tabalbiev','+996555777666','urmat@.com',2),
+	    ('Jana','Urmatova','+996755123867','jana@.com',3);
+
+
+ CREAT TABLE reseptions
+ (  id SERIAL PRIMERI KEY,
+    first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	phoneNumber VARCHAR NOT NULL,
+	email VARCHAR UNIQUE,
+	hotel_id INTEGER REFERENCES hotel(id)
+	);
+INSERT INTO reseptions(first_name,last_name,phoneNumber,email,hotel_id)
+VALUES('Aiuda','Umarova', '+996765567897','Umar@.com',1),
+       ('Liza','Calamatova','+996705705705','Liza@.com',1),
+	   ('Mipa','Mupzoeva','+996700654456','mipa@.com',2),
+	   ('Nurlan','Ten','+996555000555','ten@.com',2),
+	   ('Jan','Kim','+996500555000','jan@.com',3),
+	   ('Cagin','Sylaimanov','+996772876678','Cagin@.com',3);
+
+
+CREATE TABLE secqureti
+(  id SERIAL PRIMERI KEY,
+   first_name VARCHAR NOT NULL,
+   last_name VARCHAR NOT NULL,
+    hotel_id INTEGER REGERENCES hotel(id)
+);
+INSERT INTO secqureti(first_name,last_name)
+VALUES('Kuban','Kubanov',1),
+       ('Nurjan',"Nurjanov',1),
+	   ('Icken','Ickenov',2),
+	   ('Jon','Jonov',2),
+	   ('Ben','Benov',3),
+	   ('Ken','Kenov',3);
+
+
+CREATE TABLE resturants
+(     id SERIAL PRIMERI KEY,
+      name VARCHAR NOT NULL,
+	  address VARCHAR NOT NULL,
+	  phoneNumber VARCHAR NOT NULL,
+	  email  VARCHAR UNIQUE,
+	  hotel_id INT REFERENCES hotel(id)
+);
+INSERT INTO resturants (name, address, phoneNumber,email, hotel_id)
+VALUES ('Barashik','Karakol,Toktogul Street 33', '+996777111233','barashik@.com',1),
+        ('Navat','Naryn,Central Avenue 10', '+9966550333344','navat@.com',2),
+		('Mubarak','Cholpon-Ata,Beach Road 5','+996770999886','mubarak.com',3);
+
+
+
+CREATE TABLE povar
+(   id SERIAL PRIMERI KEY,
+    first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	resturants_id INTEGER REFERENCES resturants(id)
+);
+INSERT INTO povar(first_name,last_name,resturants_id)
+VALUES('Asel', 'Turdubekova', '+996777112233', 1),
+       ('Bektur', 'Sadykov', '+996550998877', 2),
+       ('Ainura', 'Omurbekova', '+996702334455', 3),
+       ('Tilek', 'Erkinov', '+996505667788', 1),
+       ('Aizada', 'Mukasheva', '+996701445566', 2),
+		('Janil','Jantarova','+996705543123',3);
+
+
+CREATE TABLE admin
+(  id SERIAL PRIMERI KEY,
+   first_name VARCHAR NOT NULL,
+   last_name VARCHAR NOT NULL,
+   phoneNumber VARCHAR NOT NULL,
+   resturants_id INTEGER REFERENCES resturants(id)
+
+);
+INSERT INTO admin(first_name,last_name,phoneNumber,resturants_id)
+VALUES('Aibek', 'Samatov', '+996555123456', 1),
+       ('Meerim', 'Toktobekova', '+996700654321', 2),
+       ('Nuris', 'Bekbolotov', '+996500789012', 1);
+
+
+
+CREATE TABLE barmen
+(   id SERIAL PRIMERI KEY,
+    first_name VARCHAR NOT NULL,
+	last_name VARCHAR NOT NULL,
+	resturants_id INTEGER REFERENCES resturants(id)
+);
+INSERT INTO barmen(first_name, last_name, restaurants_id)
+VALUES ('Bakyt', 'Zholdoshev', 1),
+       ('Ainur', 'Kadyrova', 2),
+       ('Ruslan', 'Bekov', 3),
+       ('Gulnaz', 'Ermekova', 1),
+       ('Tilek', 'Abdraimov', 2);
+
+
+CREATE TABLE users
+(  id SERIAL PRIMERI KEY,
+   first_name VAECHAR NOT NULL,
+   last_name VARCHAR NOT NULL,
+   address VARCHAR NOT NULL,
+   phoneNumber VARCHAR NOT NULL,
+   hotel_id INTEGER REFERENCES hotel(id),
+   resturants_id INTEGER REFERENCES resturants(id)
+
+);
+IINSERT INTO users (first_name,last_name,address,phoneNumber,hotel_id,resturants_id)
+VALUES('Nurzhan', 'Aitbaev', 'Bishkek, Togolok Moldo 55', '+996700555777', 1, 2),
+('Aizada', 'Kydyrova', 'Osh, Kurmanjan-Datka 12', '+996705223344', 2, 1),
+('Tilek', 'Umetaliev', 'Karakol, Toktogul 88', '+996709998877', 3, 3),
+('Gulzat', 'Erkinbaeva', 'Naryn, Manas 21', '+996771334455', 1, 1),
+('Bakyt', 'Saparov', 'Talas, Lenin 14', '+996773667788', 2, 2),
+('Samat','Ycmanov','Talas,Manas 54','+996500909876',3,3);
+
